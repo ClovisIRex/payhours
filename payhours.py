@@ -4,9 +4,9 @@ REQUIRED_WORKING_HOURS_EACH_DAY = 9
 
 now = datetime.datetime.now()
 today = now.today().day
-holidays = []
 restDays = [4,5]
 businessdays = 0
+vacations = 0
 lastday = 0
 
 while True:      
@@ -17,19 +17,16 @@ while True:
         continue
     break
 
-isVacations = str(raw_input("Did you take day-offs? (enter y for yes, anything else for no): \n"))
+isVacations = str(raw_input("Did you take day-offs/holidays/vacations? (enter y for yes, anything else for no): \n"))
 
 if isVacations is "y":
     while True:
         try:
-            vacation = int(raw_input("Enter day-off/holidays/vacations this month in day's number(e.g 11 for 11th of this month): \n"))
+            vacations = int(raw_input("Enter number of day-offs/holidays/vacations: \n"))
         except Exception:
             print "Invalid number!"
             continue
-        holidays.append(datetime.date(now.year,now.month,vacation))
-        isMore = str(raw_input("More days?(enter y for yes, anything else for no): \n"))
-        if isMore is not "y":
-            break
+        break
 
 for i in range(1, 32):
     try:
@@ -37,9 +34,9 @@ for i in range(1, 32):
         lastday = i
     except(ValueError):
         break
-    if thisdate.weekday() not in restDays and thisdate not in holidays:
+    if thisdate.weekday() not in restDays:
         businessdays += 1
-total = businessdays * REQUIRED_WORKING_HOURS_EACH_DAY
+total = (businessdays - vacations) * REQUIRED_WORKING_HOURS_EACH_DAY
 
 dayleft = lastday - today + 1
 
