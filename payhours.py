@@ -4,7 +4,7 @@ REQUIRED_WORKING_HOURS_EACH_DAY = 9
 
 now = datetime.datetime.now()
 today = now.today().day
-alreadyDone = int(raw_input("Enter number of hours already done: \n"))
+alreadyDone = float(raw_input("Enter number of hours already done: \n"))
 holidays = [datetime.date(2017, 11, 22)] #[] -add holidays here
 restDays = [4,5]
 businessdays = 0
