@@ -4,11 +4,32 @@ REQUIRED_WORKING_HOURS_EACH_DAY = 9
 
 now = datetime.datetime.now()
 today = now.today().day
-alreadyDone = float(raw_input("Enter number of hours already done: \n"))
-holidays = [datetime.date(2017, 11, 22)] #[] -add holidays here
+holidays = []
 restDays = [4,5]
 businessdays = 0
 lastday = 0
+
+while True:      
+    try:
+        alreadyDone = float(raw_input("Enter number of hours already done: \n"))
+    except Exception:
+        print "Invalid number!"
+        continue
+    break
+
+isVacations = str(raw_input("Did you take day-offs? (enter y for yes, anything else for no): \n"))
+
+if isVacations is "y":
+    while True:
+        try:
+            vacation = int(raw_input("Enter day-off/holidays/vacations this month in day's number(e.g 11 for 11th of this month): \n"))
+        except Exception:
+            print "Invalid number!"
+            continue
+        holidays.append(datetime.date(now.year,now.month,vacation))
+        isMore = str(raw_input("More days?(enter y for yes, anything else for no): \n"))
+        if isMore is not "y":
+            break
 
 for i in range(1, 32):
     try:
