@@ -17,16 +17,14 @@ while True:
         continue
     break
 
-isVacations = str(raw_input("Did you take day-offs/holidays/vacations? (enter y for yes, anything else for no): \n"))
 
-if isVacations is "y":
-    while True:
-        try:
-            vacations = int(raw_input("Enter number of day-offs/holidays/vacations: \n"))
-        except Exception:
-            print "Invalid number!"
-            continue
-        break
+while True:
+    try:
+        vacations = int(raw_input("Enter number of day-offs/holidays/vacations: \n"))
+    except Exception:
+        print "Invalid number!"
+        continue
+    break
 
 for i in range(1, 32):
     try:
