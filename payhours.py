@@ -36,7 +36,7 @@ for i in range(1, 32):
         businessdays += 1
 total = (businessdays - vacations) * REQUIRED_WORKING_HOURS_EACH_DAY
 
-dayleft = lastday - today + 1
+dayleft = businessdays - vacations
 
 
 print "---------------------------"
