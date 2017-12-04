@@ -36,12 +36,11 @@ for i in range(1, 32):
         businessdays += 1
 total = (businessdays - vacations) * REQUIRED_WORKING_HOURS_EACH_DAY
 
-dayleft = businessdays - vacations
-
+dayleft = businessdays - 1
 
 print "---------------------------"
 print "Total number of hours to work this month: {}".format(total)
-print "Total number of hours already done this month: {}".format(alreadyDone)
+print "Number of hours already done this month: {}".format(alreadyDone)
 print "Number of hours left to work this month: {}".format(total-alreadyDone)
 print "Number of days left to work this month: {}".format(dayleft)
 print "Average of hours left to work each day this month: {}".format((total-alreadyDone)/float(dayleft))
