@@ -9,6 +9,7 @@ businessdays = 0
 vacations = 0
 lastday = 0
 
+
 while True:      
     try:
         alreadyDone = float(raw_input("Enter number of hours already done: \n"))
@@ -36,7 +37,14 @@ for i in range(1, 32):
         businessdays += 1
 total = (businessdays - vacations) * REQUIRED_WORKING_HOURS_EACH_DAY
 
-dayleft = businessdays - 1
+dayleft = 0
+for i in range(1, (lastday - today +2)):
+    try:
+        date = datetime.date(now.year, now.month, i)
+    except(ValueError):
+        break
+    if date.weekday() not in restDays:
+        dayleft += 1
 
 print "---------------------------"
 print "Total number of hours to work this month: {}".format(total)
