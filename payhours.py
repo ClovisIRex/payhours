@@ -37,14 +37,15 @@ for i in range(1, 32):
         businessdays += 1
 total = (businessdays - vacations) * REQUIRED_WORKING_HOURS_EACH_DAY
 
-dayleft = 0
-for i in range(1, (lastday - today +2)):
+dayleft = (lastday - today) + 1
+
+for i in range(1, dayleft):
     try:
         date = datetime.date(now.year, now.month, i)
     except(ValueError):
         break
-    if date.weekday() not in restDays:
-        dayleft += 1
+    if date.weekday() in restDays:
+        dayleft -= 1
 
 print "---------------------------"
 print "Total number of hours to work this month: {}".format(total)
